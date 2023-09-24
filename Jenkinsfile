@@ -54,8 +54,37 @@ pipeline {
     }
 
     post {
-        always {
-            // Clean up resources if needed
-        }
+    always {
+        // Clean up resources if needed
+        echo "Always execute this block of code"
+
+        // Add your cleanup tasks here
+        // For example, deleting temporary files, stopping services, etc.
     }
+
+    success {
+        // Actions to perform when the pipeline is successful
+        echo "Pipeline executed successfully"
+    }
+
+    failure {
+        // Actions to perform when the pipeline fails
+        echo "Pipeline failed"
+
+        // You can add additional actions for failure scenarios here
+    }
+
+    unstable {
+        // Actions to perform when the pipeline is unstable
+        echo "Pipeline is unstable"
+
+        // You can add additional actions for unstable scenarios here
+    }
+
+    changed {
+        // Actions to perform when the pipeline state changes (e.g., from success to failure)
+        echo "Pipeline state changed"
+    }
+}
+
 }
