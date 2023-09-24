@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        PATH = "C:\\Windows\\System32;C:\\Program Files\\dotnet"
+        PATH = "C:\\Windows\\System32;C:\\Program Files\\dotnet;C:\\Program Files\\Docker"
         AZURE_CREDENTIALS = credentials('azure-cred') 
         DOCKER_REGISTRY = 'docker.io'
         DOCKER_REPO = 'tulasivenkatasivakumar/joespizza'
