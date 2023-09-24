@@ -2,12 +2,17 @@ pipeline {
     agent any
 
     environment {
-        PATH = "C:\\Windows\\System32;C:\\Program Files\\dotnet;C:\\Program Files\\Docker"
+        PATH = "C:\\Windows\\System32;C:\\Program Files\\dotnet"
         AZURE_CREDENTIALS = credentials('azure-cred') 
         DOCKER_REGISTRY = 'docker.io'
         DOCKER_REPO = 'tulasivenkatasivakumar/joespizza'
 
         AZURE_VM_IP = '20.65.243.182'
+    }
+
+    tools {
+        // Define Docker installation
+        docker 'dockerInstallation'
     }
 
     stages {
@@ -54,37 +59,24 @@ pipeline {
     }
 
     post {
-    always {
-        // Clean up resources if needed
-        echo "Always execute this block of code"
+        always {
+            echo "Always execute this block of code"
+        }
 
-        // Add your cleanup tasks here
-        // For example, deleting temporary files, stopping services, etc.
+        success {
+            echo "Pipeline executed successfully"
+        }
+
+        failure {
+            echo "Pipeline failed"
+        }
+
+        unstable {
+            echo "Pipeline is unstable"
+        }
+
+        changed {
+            echo "Pipeline state changed"
+        }
     }
-
-    success {
-        // Actions to perform when the pipeline is successful
-        echo "Pipeline executed successfully"
-    }
-
-    failure {
-        // Actions to perform when the pipeline fails
-        echo "Pipeline failed"
-
-        // You can add additional actions for failure scenarios here
-    }
-
-    unstable {
-        // Actions to perform when the pipeline is unstable
-        echo "Pipeline is unstable"
-
-        // You can add additional actions for unstable scenarios here
-    }
-
-    changed {
-        // Actions to perform when the pipeline state changes (e.g., from success to failure)
-        echo "Pipeline state changed"
-    }
-}
-
 }
