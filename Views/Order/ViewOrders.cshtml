@@ -1,0 +1,18 @@
+﻿@model List<Order>
+
+<h1>Orders</h1>
+
+<div class="row">
+    @foreach (var order in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Order ID: @order.OrderId</h5>
+                    <p class="card-text">Quantity: @order.Quantity</p>
+                    <!-- Add other order details as needed -->
+                </div>
+            </div>
+        </div>
+    }
+</div>

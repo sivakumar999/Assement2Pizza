@@ -1,0 +1,7 @@
+﻿<h1>Order Checkout</h1>
+<p>You have selected: @ViewBag.PizzaType</p>
+<form action="/Order/OrderConfirmation" method="post">
+    <input type="hidden" name="pizzaType" value="@ViewBag.PizzaType">
+    Quantity: <input type="number" name="quantity" value="1" min="1"><br>
+    <input type="submit" value="Checkout">
+</form>
