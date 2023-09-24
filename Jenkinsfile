@@ -12,7 +12,7 @@ pipeline {
 
     tools {
         // Define Docker installation
-        docker 'dockerInstallation'
+        docker 'Docker-cred'
     }
 
     stages {
